@@ -23,10 +23,10 @@ namespace API.Controllers
             return await _mediator.Send(new List.Query());
         }
 
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<Quote>> GetActivity(Guid id)
-        // {
-        //     return await _context.Quotes.FindAsync(id);
-        // }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Quote>> GetQuote(Guid id)
+        {
+            return await _mediator.Send(new Details.Query { Id = id });
+        }
     }
 }
