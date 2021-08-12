@@ -34,5 +34,12 @@ namespace API.Controllers
         {
             return Ok(await _mediator.Send(new Create.Command { Quote = quote }));
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> EditQuote(Guid id, Quote quote)
+        {
+            quote.Id = id;
+            return Ok(await _mediator.Send(new Edit.Command { Quote = quote }));
+        }
     }
 }
