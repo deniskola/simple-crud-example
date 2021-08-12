@@ -28,5 +28,11 @@ namespace API.Controllers
         {
             return await _mediator.Send(new Details.Query { Id = id });
         }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateQuote(Quote quote)
+        {
+            return Ok(await _mediator.Send(new Create.Command { Quote = quote }));
+        }
     }
 }
