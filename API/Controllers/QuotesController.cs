@@ -5,8 +5,6 @@ using Application.Quotes;
 using Domain;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Persistence;
 
 namespace API.Controllers
 {
@@ -40,6 +38,13 @@ namespace API.Controllers
         {
             quote.Id = id;
             return Ok(await _mediator.Send(new Edit.Command { Quote = quote }));
+        }
+
+        [HttpDelete("{id}")]
+
+        public async Task<IActionResult> DeleteQuote(Guid id)
+        {
+            return Ok(await _mediator.Send(new Delete.Command { Id = id }));
         }
     }
 }
