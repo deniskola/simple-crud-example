@@ -1,5 +1,6 @@
 import {useState, useEffect} from "react";
 import "./App.css";
+import QuoteDashboard from "./Components/QuoteDashboard";
 
 function App() {
   const [quotes, setQuotes] = useState([]);
@@ -17,13 +18,7 @@ function App() {
 
   return (
     <div>
-      {quotes.map((quote) => {
-        return (
-          <div key={quote.id}>
-            <h1>{quote.paragraph}</h1>
-          </div>
-        );
-      })}
+      <QuoteDashboard quotes={quotes} />
     </div>
   );
 }
