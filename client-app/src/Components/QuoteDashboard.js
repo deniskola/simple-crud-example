@@ -8,7 +8,7 @@ export default function QuoteDashboard({quotes}) {
   
     return (
         <Container >
-            <Grid  container spacing={3}>
+            <Grid container spacing={3}>
                 <Grid item xs={12}   >
                    <Header/>
                 </Grid>
