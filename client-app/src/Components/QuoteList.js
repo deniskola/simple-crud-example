@@ -10,7 +10,7 @@ import {
 } from "@material-ui/core";
 import {DeleteOutline, Edit, FormatQuoteOutlined} from "@material-ui/icons";
 
-export default function QuoteList({quotes}) {
+export default function QuoteList({quotes, selectQuote}) {
   return (
     <Container maxWidth="sm">
       <Card variant="outlined" spacing={4}>
@@ -25,12 +25,12 @@ export default function QuoteList({quotes}) {
               </CardContent>
               <CardActions className="buttons">
                 <Button
+                  onClick={() => selectQuote(quote.id)}
                   variant="outlined"
                   style={{color: "blue", border: "0px solid blue"}}
                 >
                   <Edit />
                 </Button>
-
                 <Button
                   variant="outlined"
                   style={{color: "red", border: "0px solid red"}}

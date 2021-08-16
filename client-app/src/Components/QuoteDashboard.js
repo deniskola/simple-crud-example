@@ -4,7 +4,7 @@ import QuoteList from './QuoteList';
 import {Grid,  Container} from '@material-ui/core';
 import Header from './Header';
 
-export default function QuoteDashboard({quotes}) {
+export default function QuoteDashboard({quotes , selectQuote, selectedQuote, cancelSelectQuote}) {
   
     return (
         <Container >
@@ -13,10 +13,14 @@ export default function QuoteDashboard({quotes}) {
                    <Header/>
                 </Grid>
                 <Grid item xs> 
-                    <QuoteList quotes={quotes}/>
+                    <QuoteList 
+                        quotes={quotes} 
+                        selectQuote = {selectQuote}
+                    />
                 </Grid>
                 <Grid item xs> 
-                    <Form/>
+                    {selectedQuote && 
+                    <Form cancelSelectQuote= {cancelSelectQuote}/>}
                 </Grid>
             </Grid>
             </Container>

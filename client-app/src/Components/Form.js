@@ -8,7 +8,7 @@ import {
 } from "@material-ui/core";
 import React from "react";
 
-export default function Form() {
+export default function Form({cancelSelectQuote}) {
   return (
     <Container>
       <Paper variant="outlined">
@@ -34,7 +34,7 @@ export default function Form() {
               <Button style={{border: "1px solid green", color: "green"}}>
                 Submit
               </Button>
-              <Button>Cancel</Button>
+              <Button onClick={cancelSelectQuote}>Cancel</Button>
             </ButtonGroup>
           </Box>
         </form>

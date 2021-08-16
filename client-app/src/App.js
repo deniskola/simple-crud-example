@@ -1,24 +1,33 @@
 import {useState, useEffect} from "react";
 import "./App.css";
 import QuoteDashboard from "./Components/QuoteDashboard";
+import agent from "./api/agent";
 
 function App() {
   const [quotes, setQuotes] = useState([]);
+  const [selectedQuote, setSelectedQuote] = useState(undefined);
 
   useEffect(() => {
-    fetchQuotes();
+    agent.Quotes.list().then((response) => {
+      setQuotes(response);
+    });
   }, []);
 
-  async function fetchQuotes() {
-    const response = await fetch("http://localhost:5000/api/quotes");
-    const data = await response.json();
-    console.log(data);
-    setQuotes(data);
+  function handleSelectQuote(id) {
+    setSelectedQuote(quotes.find((x) => x.id === id));
   }
 
+  function handleCancelSelectQuote() {
+    setSelectedQuote(undefined);
+  }
   return (
     <div>
-      <QuoteDashboard quotes={quotes} />
+      <QuoteDashboard
+        quotes={quotes}
+        selectedQuote={selectedQuote}
+        selectQuote={handleSelectQuote}
+        cancelSelectQuote={handleCancelSelectQuote}
+      />
     </div>
   );
 }
