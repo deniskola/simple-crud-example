@@ -1,5 +1,4 @@
-import React from "react";
-import axios, {AxiosResponse} from "axios";
+import axios from "axios";
 
 const sleep = (delay) => {
   return new Promise((resolve) => {
@@ -7,7 +6,7 @@ const sleep = (delay) => {
   });
 };
 
-axios.default.baseUrl = "http//localhost:5000/api";
+axios.defaults.baseURL = "http://localhost:5000/api";
 
 axios.interceptors.response.use(async (response) => {
   try {
