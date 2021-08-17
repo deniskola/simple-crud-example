@@ -4,23 +4,26 @@ import QuoteList from './QuoteList';
 import {Grid,  Container} from '@material-ui/core';
 import Header from './Header';
 
-export default function QuoteDashboard({quotes , selectQuote, selectedQuote, cancelSelectQuote}) {
+export default function QuoteDashboard({
+    quotes , selectQuote, selectedQuote, cancelSelectQuote, createMode, openForm, closeForm, createOrEdit
+}) {
   
     return (
         <Container >
             <Grid container spacing={3}>
                 <Grid item xs={12}   >
-                   <Header/>
+                   <Header openForm= {openForm}/>
                 </Grid>
                 <Grid item xs> 
                     <QuoteList 
                         quotes={quotes} 
                         selectQuote = {selectQuote}
+                        openForm ={openForm}
                     />
                 </Grid>
                 <Grid item xs> 
-                    {selectedQuote && 
-                    <Form cancelSelectQuote= {cancelSelectQuote}/>}
+                    { (selectedQuote || createMode) && 
+                    <Form  cancelSelectQuote= {cancelSelectQuote} closeForm={closeForm} quote={selectedQuote} createOrEdit={createOrEdit}/>}
                 </Grid>
             </Grid>
             </Container>

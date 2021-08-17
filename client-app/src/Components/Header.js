@@ -2,7 +2,7 @@ import {Box, Button, Container} from "@material-ui/core";
 import React from "react";
 import {AddCircleOutline} from "@material-ui/icons";
 
-export default function Header() {
+export default function Header({openForm}) {
   return (
     <Container>
       <Box
@@ -11,6 +11,7 @@ export default function Header() {
         style={{backgroundColor: "#00695c", color: "white", marginTop: "20px"}}
       >
         <Button
+          onClick={openForm}
           variant="outlined"
           style={{
             color: "white",

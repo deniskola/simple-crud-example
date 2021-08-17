@@ -6,13 +6,32 @@ import {
   Button,
   Paper,
 } from "@material-ui/core";
-import React from "react";
+import React, {useState} from "react";
 
-export default function Form({cancelSelectQuote}) {
+export default function Form({
+  quote: selectedQuote,
+  cancelSelectQuote,
+  createOrEdit,
+}) {
+  const initialState = selectedQuote ?? {
+    id: "",
+    paragraph: "",
+  };
+
+  const [quote, setQuote] = useState(initialState);
+
+  function handleSubmit() {
+    createOrEdit(quote);
+  }
+
+  function handleInputChange(event) {
+    const {name, value} = event.target;
+    setQuote({...quote, [name]: value});
+  }
   return (
     <Container>
       <Paper variant="outlined">
-        <form>
+        <form autoComplete="off">
           <Box
             style={{padding: "20px 20px 20px 20px"}}
             display="flex"
@@ -22,6 +41,9 @@ export default function Form({cancelSelectQuote}) {
             flexDirection="column"
           >
             <TextField
+              onChange={handleInputChange}
+              value={quote.paragraph}
+              name="paragraph"
               fullWidth={true}
               multiline
               rows={1}
@@ -31,7 +53,11 @@ export default function Form({cancelSelectQuote}) {
             />
 
             <ButtonGroup style={{margin: "20px 0 20px 0"}}>
-              <Button style={{border: "1px solid green", color: "green"}}>
+              <Button
+                onClick={handleSubmit}
+                type="button"
+                style={{border: "1px solid green", color: "green"}}
+              >
                 Submit
               </Button>
               <Button onClick={cancelSelectQuote}>Cancel</Button>
