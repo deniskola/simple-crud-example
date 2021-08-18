@@ -50,6 +50,12 @@ function App() {
       });
     }
   }
+
+  function handleDeleteQuote(id) {
+    agent.Quotes.delete(id).then(() => {
+      setQuotes([...quotes.filter((x) => x.id !== id)]);
+    });
+  }
   return (
     <div>
       <QuoteDashboard
@@ -61,6 +67,7 @@ function App() {
         openForm={handleFormOpen}
         closeForm={handleFormClose}
         createOrEdit={handleCreateOrEditQuote}
+        deleteQuote={handleDeleteQuote}
       />
     </div>
   );

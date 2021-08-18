@@ -5,7 +5,7 @@ import {Grid,  Container} from '@material-ui/core';
 import Header from './Header';
 
 export default function QuoteDashboard({
-    quotes , selectQuote, selectedQuote, cancelSelectQuote, createMode, openForm, closeForm, createOrEdit
+    quotes , selectQuote, selectedQuote, cancelSelectQuote, createMode, openForm, closeForm, createOrEdit, deleteQuote
 }) {
   
     return (
@@ -19,6 +19,7 @@ export default function QuoteDashboard({
                         quotes={quotes} 
                         selectQuote = {selectQuote}
                         openForm ={openForm}
+                        deleteQuote = {deleteQuote}
                     />
                 </Grid>
                 <Grid item xs> 
